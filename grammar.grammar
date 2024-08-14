@@ -1,0 +1,66 @@
+grammar
+ rules
+
+rules
+ rule
+ rule 0x0a rules
+
+rule
+ (rule_name:RULE) 0x0a alternatives
+
+rule_name
+ lower_letter
+ lower_letter rule_name
+
+lower_letter
+ 0x61.0x7a
+
+alternatives
+ alternative
+ alternative alternatives
+
+alternative
+ 0x20 items (:ALTERNATIVE_END) 0x0a
+
+items
+ item
+ item 0x20 items
+
+item
+ (singleton:ITEM)
+ (range:ITEM)
+ (rule_name:ITEM)
+ token
+
+singleton
+ 0x30 0x78 0x30.0x39 0x30.0x39
+ 0x30 0x78 0x30.0x39 0x61.0x66
+ 0x30 0x78 0x61.0x66 0x30.0x39
+ 0x30 0x78 0x61.0x66 0x61.0x66
+
+range
+ singleton 0x2e singleton
+
+token
+ 0x28 (:TOKEN_BEGIN) 0x39 (token_name:TOKEN_NAME) 0x29
+ 0x28 (:TOKEN_BEGIN) token_items 0x39 (token_name:TOKEN_NAME) 0x29
+
+token_items
+ token_item
+ token_item 0x20 token_items
+
+token_item
+ (singleton:ITEM)
+ (range:ITEM)
+ (rule_name:ITEM)
+
+nothing
+ 0
+ 0x20 0x30 0x0a
+
+token_name
+ upper_latter
+ upper_latter token_name
+
+upper_latter
+ 0x41.0x5a
