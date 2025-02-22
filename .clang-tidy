@@ -18,9 +18,12 @@ Checks: '-*,
          -modernize-use-trailing-return-type,
          -readability-identifier-length,
          -readability-braces-around-statements,
+         -readability-function-cognitive-complexity,
          -cppcoreguidelines-avoid-magic-numbers,
-         -readability-magic-numbers
-         '
-
+         -readability-magic-numbers,
+         -misc-no-recursion,
+         -misc-use-anonymous-namespace,
+         -cppcoreguidelines-pro-bounds-pointer-arithmetic,
+         -bugprone-branch-clone'
 WarningsAsErrors: '*'
 FormatStyle: none
